@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Official Apology 🎂</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Trebuchet MS', sans-serif;
+    background: linear-gradient(135deg, #ffb6c1, #d8b4fe, #a5d8ff);
+}
+
+.card {
+    background: rgba(255,255,255,0.85);
+    width: 90%;
+    max-width: 430px;
+    padding: 35px 25px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+    z-index: 2;
+    animation: appear 1.2s ease;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(50px) scale(.8); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+h1 {
+    color: #b83280;
+    margin-bottom: 15px;
+}
+
+.cake {
+    font-size: 85px;
+    animation: bounce 2s infinite;
+    margin: 15px;
+}
+
+@keyframes bounce {
+    0%,100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+p {
+    color: #555;
+    line-height: 1.7;
+    margin: 12px 0;
+}
+
+button {
+    border: none;
+    padding: 14px 25px;
+    border-radius: 30px;
+    background: #e75480;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background: #c2185b;
+}
+
+#message {
+    display: none;
+    margin-top: 20px;
+    color: #b83280;
+    font-weight: bold;
+    animation: appear .7s ease;
+}
+
+.balloon {
+    position: absolute;
+    bottom: -120px;
+    font-size: 40px;
+    animation: float 8s linear infinite;
+}
+
+@keyframes float {
+    to { transform: translateY(-120vh) rotate(25deg); }
+}
+
+.heart {
+    position: absolute;
+    animation: heart 5s linear infinite;
+    font-size: 22px;
+}
+
+@keyframes heart {
+    from { transform: translateY(110vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div style="font-size:40px">🚨 OFFICIAL ANNOUNCEMENT 🚨</div>
+
+    <div class="cake">🎂</div>
+
+    <h1>I'm Guilty. 😔</h1>
+
+    <p>
+        I have committed a serious crime...
+        <br><br>
+        I didn't post anything for your birthday.
+        <br>
+        No story. No birthday edit.
+        No public appreciation.
+    </p>
+
+    <p>
+        I understand that this is unacceptable
+        and I deeply regret my actions.
+    </p>
+
+    <h3 style="color:#b83280">
+        Please consider forgiving me. 🥺
+    </h3>
+
+    <button onclick="forgive()">
+        Forgive me? 💗
+    </button>
+
+    <div id="message">
+        🎉 CASE CLOSED! 🎉
+        <br><br>
+        Thank you for accepting my apology.
+        <br>
+        Happy Belated Birthday! ❤️
+        <br><br>
+        Don't expect a birthday story next year either. 😂
+    </div>
+</div>
+
+<script>
+function forgive() {
+    document.getElementById("message").style.display = "block";
+
+    for (let i = 0; i < 100; i++) {
+        let confetti = document.createElement("div");
+        confetti.innerHTML = ["🎉","💗","✨","🎊","❤️"][
+            Math.floor(Math.random()*5)
+        ];
+
+        confetti.style.position = "absolute";
+        confetti.style.left = Math.random()*100 + "vw";
+        confetti.style.top = "-30px";
+        confetti.style.fontSize = "25px";
+        confetti.style.zIndex = "5";
+        confetti.style.transition = (2+Math.random()*3) + "s linear";
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.style.top = "110vh";
+            confetti.style.transform =
+                "rotate(" + Math.random()*720 + "deg)";
+        }, 50);
+
+        setTimeout(() => confetti.remove(), 5500);
+    }
+}
+
+// Floating balloons
+const balloons = ["🎈","🎀","💗","🎈","✨"];
+
+setInterval(() => {
+    let b = document.createElement("div");
+    b.className = "balloon";
+    b.innerHTML = balloons[Math.floor(Math.random()*balloons.length)];
+    b.style.left = Math.random()*100 + "vw";
+    b.style.animationDuration = (6+Math.random()*5) + "s";
+    document.body.appendChild(b);
+
+    setTimeout(() => b.remove(), 11000);
+}, 700);
+
+</script>
+
+</body>
+</html>
